@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 10, jumpHeight = 3, gravity = -50f;
+    public float speed = 10, jumpHeight = 3, gravity = -50f, rotationSpeed = 0.10f;
+    public Transform model;
 
     public Transform GroundCheck;
     public float groundDistance = 0.4f;
@@ -43,6 +44,26 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
+
+        Quaternion.LookRotation(move, Vector3.up);
+        if (move != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move), rotationSpeed);
+            transform.Translate(move * rotationSpeed * Time.deltaTime, Space.World);
+        }
+
+        //if (move == Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move.normalized), 0.2f);
+        //}
+        //if (move != Vector3.zero)
+        //{
+        //    rigidbody.constraints = RigidbodyConstraints.None;
+        //}
+        //else
+        //{
+        //    rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        //}
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {

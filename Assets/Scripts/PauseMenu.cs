@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         //panel = GameObject.Find("Canvas");
         //panel.SetActive(false);
     }
@@ -28,40 +29,40 @@ public class PauseMenu : MonoBehaviour
         {
             IsClosed();
         }
-    }
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+        void Quit()
+        {
+            Application.Quit();
+        }
 
-    private void IsActive()
-    {
-        panel.SetActive(true);
-        b_isActive = true;
-        Debug.Log("Opened");
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-    }
+        void IsActive()
+        {
+            panel.SetActive(true);
+            b_isActive = true;
+            Debug.Log("Opened");
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
 
-    public void IsClosed()
-    {
-        panel.SetActive(false);
-        b_isActive = false;
-        Debug.Log("Closed");
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        void IsClosed()
+        {
+            panel.SetActive(false);
+            b_isActive = false;
+            Debug.Log("Closed");
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
-    public void Settings()
-    {
-        paused = true;
-        panel.SetActive(false);
-        settingsPanel.SetActive(true);
-    }
+        void Settings()
+        {
+            paused = true;
+            panel.SetActive(false);
+            settingsPanel.SetActive(true);
+        }
 
-    public void Resume()
-    {
-        IsActive();
+        void Resume()
+        {
+            IsActive();
+        }
     }
 }
