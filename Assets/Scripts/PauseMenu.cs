@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
+    public InteractableObject interactableObject;
     [SerializeField] private GameObject panel;
     [SerializeField] private GameObject settingsPanel;
+    public TMP_Text text;
     public bool paused;
     public bool b_isActive;
     public bool b_isClosed;
@@ -14,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        text = GetComponentInChildren<TMP_Text>();
         //panel = GameObject.Find("Canvas");
         //panel.SetActive(false);
     }
@@ -21,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        text.text = interactableObject.itemNumber.ToString();
         if (b_isActive == false && Input.GetKeyDown(KeyCode.Escape))
         {
             IsActive();
