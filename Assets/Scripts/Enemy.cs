@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public RaycastHit hit;
     public PlayerController playerController;
     public NavMeshAgent enemy;
 
     public Transform player, bulletSpawn;
 
-    public LayerMask groundLayer, playerLayer;
+    public LayerMask groundLayer, playerLayer, obstacle;
 
     public float health;
 
@@ -39,6 +40,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, obstacle)) ;
+        {
+            playerInAttackRange = false; playerInSightRange = false;
+        }
+
         //checks if player is in range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);

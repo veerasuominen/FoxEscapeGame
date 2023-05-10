@@ -4564,6 +4564,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
+--- !u!114 &397356838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 107234996, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
+  m_PrefabInstance: {fileID: 107234989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a12cfb095bcf834d930eaaf51186986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &397805805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442488, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
@@ -7896,6 +7907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9da6cbd820e984fa3d121cf9afa921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 397356838}
   enemy: {fileID: 643096724}
   player: {fileID: 107234990}
   bulletSpawn: {fileID: 1147549847}
