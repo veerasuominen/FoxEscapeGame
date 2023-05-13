@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public float health;
 
     //Patroling
+
+    public GameObject visionCone;
+    public Collider visionConeCollider;
+
+    public Collider attackConeCollider;
     public Vector3 walkPoint;
 
     private bool walkPointSet;
@@ -24,7 +29,7 @@ public class Enemy : MonoBehaviour
     //Attacking
     public float attackSpeed;
 
-    private bool alreadyAttacked;
+    public bool alreadyAttacked;
     public GameObject projectile;
 
     //States
@@ -32,22 +37,35 @@ public class Enemy : MonoBehaviour
 
     public bool playerInSightRange, playerInAttackRange;
 
-    private void Awake()
+    private void Start()
     {
         player = GameObject.Find("Fox").transform;
         enemy = GetComponent<NavMeshAgent>();
+        playerInSightRange = false; playerInAttackRange = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerInSightRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            playerInSightRange = false;
+        }
     }
 
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, obstacle)) ;
-        {
-            playerInAttackRange = false; playerInSightRange = false;
-        }
-
         //checks if player is in range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+
+        //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
+        //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
         if (!playerInSightRange && !playerInAttackRange)
         {
@@ -99,6 +117,7 @@ public class Enemy : MonoBehaviour
         //Make sure enemy doesn't move
         enemy.SetDestination(transform.position);
 
+        //rotate to look at player
         transform.LookAt(player);
 
         if (!alreadyAttacked)

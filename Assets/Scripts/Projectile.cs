@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
+    public float speed = 0.5f;
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.Translate(Vector3.forward);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
         Destroy(gameObject, 3);
     }
 
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

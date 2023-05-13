@@ -66,8 +66,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360317124}
-  m_LocalRotation: {x: 0.16429797, y: 0.79181254, z: -0.24279922, w: 0.5358057}
-  m_LocalPosition: {x: -2.784895, y: 2.5, z: 1.115511}
+  m_LocalRotation: {x: 0.29279003, y: -0.048291467, z: 0.014807938, w: 0.95484173}
+  m_LocalPosition: {x: 0.30266875, y: 2.5, z: -2.9846632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1378,7 +1378,7 @@ Transform:
   m_GameObject: {fileID: 4020983980232809014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4965958779694537047}
@@ -1416,7 +1416,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4020983980232809014}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.57, z: 1.57}
@@ -1457,6 +1457,7 @@ MonoBehaviour:
   gravity: -50
   rotationSpeed: 0.05
   model: {fileID: 4361374554138886284}
+  health: 5
   GroundCheck: {fileID: 0}
   groundDistance: 0.4
   groundMask:
