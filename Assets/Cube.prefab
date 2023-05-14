@@ -110,6 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01d89a2bfdbceb45962b9b76f06d73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNumber: 0
-  text: {fileID: 0}
-  maxNumObjects: 5
+  s_text: {fileID: 0}

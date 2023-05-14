@@ -6,23 +6,18 @@ using TMPro;
 
 public class InteractableObject : MonoBehaviour
 {
-    private PauseMenu pauseMenu;
+    public CollectableText s_text;
 
-    public int itemNumber = 0;
-    public TMP_Text text;
-    public int maxNumObjects = 5;
-
-    private void Start()
-    {
-        text.text = itemNumber.ToString(itemNumber + "/" + maxNumObjects);
-    }
-
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider collider)
 
     {
-        Debug.Log("item");
-        itemNumber++;
-        gameObject.SetActive(false);
-        text.text = itemNumber.ToString(itemNumber + "/" + maxNumObjects);
+        //checks if object has the player tag before adding to the counter and deactivating the object
+        if (collider.gameObject.tag == "Player")
+        {
+            Debug.Log("item");
+            s_text.counter++;
+
+            gameObject.SetActive(false);
+        }
     }
 }
